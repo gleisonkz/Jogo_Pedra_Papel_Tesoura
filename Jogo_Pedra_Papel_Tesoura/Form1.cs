@@ -31,6 +31,7 @@ namespace Jogo_Pedra_Papel_Tesoura
             EscolhaJogador();
             EscolhaCPU();
             VerificarGanhardor();
+            
         }
 
         private void btn_papel_Click(object sender, System.EventArgs e)
@@ -53,18 +54,20 @@ namespace Jogo_Pedra_Papel_Tesoura
         {
             switch (player1)
             {
-
+                
                 case Opcoes.Pedra:
-                img_player1.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/pedra2.png");
+                img_player1.BackgroundImage = Properties.Resources.res_papel;
                     break;
 
                 case Opcoes.Papel:
-                    img_player1.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/papel2.png");
+                    img_player1.BackgroundImage = Properties.Resources.res_papel; 
                     break;
 
                 case Opcoes.Tesoura:
-                    img_player1.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/tesoura.png");
+                    img_player1.BackgroundImage = Properties.Resources.res_tesoura;
                     break;
+
+                    
 
             }
         }
@@ -76,17 +79,17 @@ namespace Jogo_Pedra_Papel_Tesoura
             if (numero == 1)
             {
                 CPU = Opcoes.Pedra;
-                img_cpu.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/pedra2.png");
+                img_cpu.BackgroundImage = Properties.Resources.res_papel;
             }
             else if (numero == 2)
             {
                 CPU = Opcoes.Papel;
-                img_cpu.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/papel2.png");
+                img_cpu.BackgroundImage = Properties.Resources.res_papel;
             }
             else if (numero == 3)
             {
                 CPU = Opcoes.Tesoura;
-                img_cpu.BackgroundImage = Image.FromFile("C:/Csharp/GitHub/Pedra_Papel_Tesoura/tesoura.png");
+                img_cpu.BackgroundImage = Properties.Resources.res_tesoura;
             }
                                           
         }
@@ -188,13 +191,6 @@ namespace Jogo_Pedra_Papel_Tesoura
         }
 
    
-
-
-
-
-
-
-
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
 

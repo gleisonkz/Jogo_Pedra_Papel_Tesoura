@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label_fimdejogo = new System.Windows.Forms.Label();
             this.label_CPU = new System.Windows.Forms.Label();
             this.label_resultado = new System.Windows.Forms.Label();
             this.label_player1 = new System.Windows.Forms.Label();
@@ -37,14 +38,13 @@
             this.img_cpu = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.img_player1 = new System.Windows.Forms.PictureBox();
-            this.btn_tesoura = new System.Windows.Forms.Button();
-            this.btn_papel = new System.Windows.Forms.Button();
-            this.btn_pedra = new System.Windows.Forms.Button();
-            this.label_fimdejogo = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reiniciarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_tesoura = new System.Windows.Forms.Button();
+            this.btn_papel = new System.Windows.Forms.Button();
+            this.btn_pedra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,7 +72,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.menuStrip1);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -83,6 +82,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(624, 441);
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label_fimdejogo
+            // 
+            this.label_fimdejogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_fimdejogo.Location = new System.Drawing.Point(201, 185);
+            this.label_fimdejogo.Name = "label_fimdejogo";
+            this.label_fimdejogo.Size = new System.Drawing.Size(219, 39);
+            this.label_fimdejogo.TabIndex = 6;
+            this.label_fimdejogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_CPU
             // 
@@ -151,6 +159,39 @@
             this.img_player1.TabIndex = 0;
             this.img_player1.TabStop = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reiniciarToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.fileToolStripMenuItem.Text = "Arquivo";
+            // 
+            // reiniciarToolStripMenuItem
+            // 
+            this.reiniciarToolStripMenuItem.Name = "reiniciarToolStripMenuItem";
+            this.reiniciarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reiniciarToolStripMenuItem.Text = "Reiniciar";
+            this.reiniciarToolStripMenuItem.Click += new System.EventHandler(this.reiniciarToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
             // btn_tesoura
             // 
             this.btn_tesoura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_tesoura.BackgroundImage")));
@@ -186,49 +227,6 @@
             this.btn_pedra.TabIndex = 0;
             this.btn_pedra.UseVisualStyleBackColor = true;
             this.btn_pedra.Click += new System.EventHandler(this.btn_pedra_Click);
-            // 
-            // label_fimdejogo
-            // 
-            this.label_fimdejogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_fimdejogo.Location = new System.Drawing.Point(201, 185);
-            this.label_fimdejogo.Name = "label_fimdejogo";
-            this.label_fimdejogo.Size = new System.Drawing.Size(219, 39);
-            this.label_fimdejogo.TabIndex = 6;
-            this.label_fimdejogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reiniciarToolStripMenuItem,
-            this.sairToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.fileToolStripMenuItem.Text = "Arquivo";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
-            // 
-            // reiniciarToolStripMenuItem
-            // 
-            this.reiniciarToolStripMenuItem.Name = "reiniciarToolStripMenuItem";
-            this.reiniciarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.reiniciarToolStripMenuItem.Text = "Reiniciar";
-            this.reiniciarToolStripMenuItem.Click += new System.EventHandler(this.reiniciarToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // Form1
             // 
