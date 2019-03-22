@@ -151,10 +151,43 @@ namespace Jogo_Pedra_Papel_Tesoura
 
             }
 
+            if (int.Parse(label_CPU.Text) > (int.Parse(label_player1.Text)))
+            {
+
+                label_CPU.ForeColor = Color.DarkGreen;
+                label_player1.ForeColor = Color.Red;
+
+            }
+            else if (int.Parse(label_CPU.Text) < (int.Parse(label_player1.Text)))
+            {
+
+                label_CPU.ForeColor = Color.Red;
+                label_player1.ForeColor = Color.DarkGreen;
+
+            }
+
+            if (int.Parse(label_CPU.Text) == 10)
+            {
+                btn_papel.Enabled = false;
+                btn_pedra.Enabled = false;
+                btn_tesoura.Enabled = false;
+                label_fimdejogo.Text = ("Fim de Jogo!");
+            }
+
+            if (int.Parse(label_player1.Text) == 10)
+            {
+                btn_papel.Enabled = false;
+                btn_pedra.Enabled = false;
+                btn_tesoura.Enabled = false;
+                label_fimdejogo.Text = ("Fim de Jogo!");
+
+            }
+
+
 
         }
 
-
+   
 
 
 
@@ -164,6 +197,32 @@ namespace Jogo_Pedra_Papel_Tesoura
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void reiniciarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label_player1.Text = 0.ToString(); ;
+            label_CPU.Text = 0.ToString(); ;
+            btn_papel.Enabled = true;
+            btn_pedra.Enabled = true;
+            btn_tesoura.Enabled = true;
+            img_cpu.BackgroundImage = null;
+            img_player1.BackgroundImage = null;
+            label_resultado.Text = null;
+            label_fimdejogo.Text = null;
+            label_CPU.ForeColor = Color.Black;
+            label_player1.ForeColor = Color.Black;
 
         }
     }
