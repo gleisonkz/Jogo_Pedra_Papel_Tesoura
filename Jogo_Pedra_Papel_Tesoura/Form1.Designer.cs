@@ -30,21 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btn_pedra = new System.Windows.Forms.Button();
-            this.btn_papel = new System.Windows.Forms.Button();
-            this.btn_tesoura = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label_CPU = new System.Windows.Forms.Label();
+            this.label_resultado = new System.Windows.Forms.Label();
+            this.label_player1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.img_player1 = new System.Windows.Forms.PictureBox();
             this.img_cpu = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.img_player1 = new System.Windows.Forms.PictureBox();
+            this.btn_tesoura = new System.Windows.Forms.Button();
+            this.btn_papel = new System.Windows.Forms.Button();
+            this.btn_pedra = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_cpu)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_player1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -56,8 +59,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label_CPU);
+            this.splitContainer1.Panel1.Controls.Add(this.label_resultado);
+            this.splitContainer1.Panel1.Controls.Add(this.label_player1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -69,29 +76,72 @@
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 0;
             // 
-            // btn_pedra
+            // label_CPU
             // 
-            this.btn_pedra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_pedra.BackgroundImage")));
-            this.btn_pedra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_pedra.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_pedra.Location = new System.Drawing.Point(0, 0);
-            this.btn_pedra.Name = "btn_pedra";
-            this.btn_pedra.Size = new System.Drawing.Size(213, 163);
-            this.btn_pedra.TabIndex = 0;
-            this.btn_pedra.UseVisualStyleBackColor = true;
-            this.btn_pedra.Click += new System.EventHandler(this.btn_pedra_Click);
+            this.label_CPU.AutoSize = true;
+            this.label_CPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_CPU.Location = new System.Drawing.Point(503, 9);
+            this.label_CPU.Name = "label_CPU";
+            this.label_CPU.Size = new System.Drawing.Size(49, 54);
+            this.label_CPU.TabIndex = 5;
+            this.label_CPU.Text = "0";
             // 
-            // btn_papel
+            // label_resultado
             // 
-            this.btn_papel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_papel.BackgroundImage")));
-            this.btn_papel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_papel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_papel.Location = new System.Drawing.Point(213, 0);
-            this.btn_papel.Name = "btn_papel";
-            this.btn_papel.Size = new System.Drawing.Size(213, 163);
-            this.btn_papel.TabIndex = 1;
-            this.btn_papel.UseVisualStyleBackColor = true;
-            this.btn_papel.Click += new System.EventHandler(this.btn_papel_Click);
+            this.label_resultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_resultado.Location = new System.Drawing.Point(210, 136);
+            this.label_resultado.Name = "label_resultado";
+            this.label_resultado.Size = new System.Drawing.Size(210, 39);
+            this.label_resultado.TabIndex = 4;
+            this.label_resultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_player1
+            // 
+            this.label_player1.AutoSize = true;
+            this.label_player1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_player1.Location = new System.Drawing.Point(75, 9);
+            this.label_player1.Name = "label_player1";
+            this.label_player1.Size = new System.Drawing.Size(49, 54);
+            this.label_player1.TabIndex = 2;
+            this.label_player1.Text = "0";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.img_cpu);
+            this.groupBox2.Location = new System.Drawing.Point(426, 43);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(195, 213);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "CPU";
+            // 
+            // img_cpu
+            // 
+            this.img_cpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.img_cpu.Location = new System.Drawing.Point(0, 41);
+            this.img_cpu.Name = "img_cpu";
+            this.img_cpu.Size = new System.Drawing.Size(186, 154);
+            this.img_cpu.TabIndex = 1;
+            this.img_cpu.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.img_player1);
+            this.groupBox1.Location = new System.Drawing.Point(3, 43);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(210, 213);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Player 1";
+            // 
+            // img_player1
+            // 
+            this.img_player1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.img_player1.Location = new System.Drawing.Point(6, 41);
+            this.img_player1.Name = "img_player1";
+            this.img_player1.Size = new System.Drawing.Size(186, 154);
+            this.img_player1.TabIndex = 0;
+            this.img_player1.TabStop = false;
             // 
             // btn_tesoura
             // 
@@ -105,43 +155,29 @@
             this.btn_tesoura.UseVisualStyleBackColor = true;
             this.btn_tesoura.Click += new System.EventHandler(this.btn_tesoura_Click);
             // 
-            // groupBox1
+            // btn_papel
             // 
-            this.groupBox1.Controls.Add(this.img_player1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 43);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 213);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Player 1";
+            this.btn_papel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_papel.BackgroundImage")));
+            this.btn_papel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_papel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_papel.Location = new System.Drawing.Point(213, 0);
+            this.btn_papel.Name = "btn_papel";
+            this.btn_papel.Size = new System.Drawing.Size(213, 163);
+            this.btn_papel.TabIndex = 1;
+            this.btn_papel.UseVisualStyleBackColor = true;
+            this.btn_papel.Click += new System.EventHandler(this.btn_papel_Click);
             // 
-            // groupBox2
+            // btn_pedra
             // 
-            this.groupBox2.Controls.Add(this.img_cpu);
-            this.groupBox2.Location = new System.Drawing.Point(426, 43);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(195, 213);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CPU";
-            // 
-            // img_player1
-            // 
-            this.img_player1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.img_player1.Location = new System.Drawing.Point(0, 28);
-            this.img_player1.Name = "img_player1";
-            this.img_player1.Size = new System.Drawing.Size(194, 154);
-            this.img_player1.TabIndex = 0;
-            this.img_player1.TabStop = false;
-            // 
-            // img_cpu
-            // 
-            this.img_cpu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.img_cpu.Location = new System.Drawing.Point(6, 28);
-            this.img_cpu.Name = "img_cpu";
-            this.img_cpu.Size = new System.Drawing.Size(186, 154);
-            this.img_cpu.TabIndex = 1;
-            this.img_cpu.TabStop = false;
+            this.btn_pedra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_pedra.BackgroundImage")));
+            this.btn_pedra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_pedra.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_pedra.Location = new System.Drawing.Point(0, 0);
+            this.btn_pedra.Name = "btn_pedra";
+            this.btn_pedra.Size = new System.Drawing.Size(213, 163);
+            this.btn_pedra.TabIndex = 0;
+            this.btn_pedra.UseVisualStyleBackColor = true;
+            this.btn_pedra.Click += new System.EventHandler(this.btn_pedra_Click);
             // 
             // Form1
             // 
@@ -155,13 +191,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedra Papel Tesoura";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.img_player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_cpu)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.img_player1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -176,6 +213,9 @@
         private System.Windows.Forms.PictureBox img_cpu;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox img_player1;
+        private System.Windows.Forms.Label label_CPU;
+        private System.Windows.Forms.Label label_resultado;
+        private System.Windows.Forms.Label label_player1;
     }
 }
 
