@@ -78,7 +78,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.btn_tesoura);
             this.splitContainer1.Panel2.Controls.Add(this.btn_papel);
             this.splitContainer1.Panel2.Controls.Add(this.btn_pedra);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(624, 441);
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 0;
@@ -181,14 +180,14 @@
             // reiniciarToolStripMenuItem
             // 
             this.reiniciarToolStripMenuItem.Name = "reiniciarToolStripMenuItem";
-            this.reiniciarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reiniciarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.reiniciarToolStripMenuItem.Text = "Reiniciar";
             this.reiniciarToolStripMenuItem.Click += new System.EventHandler(this.reiniciarToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 

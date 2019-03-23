@@ -1,28 +1,22 @@
-﻿using System.Windows.Forms;
+﻿using System;
 using System.Drawing;
-using System;
+using System.Windows.Forms;
 
 namespace Jogo_Pedra_Papel_Tesoura
 {
     public partial class Form1 : Form
-    {
-
+    { 
         enum Opcoes { Pedra, Papel, Tesoura};
-        enum Resultado {Jogador, Cpu, Empate};
+        enum Resultado {Jogador, CPU, Empate};
         Opcoes player1 = new Opcoes();
         Opcoes CPU = new Opcoes();
         Random rdm = new Random();
-        Resultado ganhador = new Resultado();
-
+        Resultado quem_venceu = new Resultado();
+        int placarP1, placarCPU;
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btn_pedra_Click(object sender, System.EventArgs e)
@@ -30,8 +24,7 @@ namespace Jogo_Pedra_Papel_Tesoura
             player1 = Opcoes.Pedra;
             EscolhaJogador();
             EscolhaCPU();
-            VerificarGanhardor();
-            
+            VerificaVencerdor();
         }
 
         private void btn_papel_Click(object sender, System.EventArgs e)
@@ -39,7 +32,7 @@ namespace Jogo_Pedra_Papel_Tesoura
             player1 = Opcoes.Papel;
             EscolhaJogador();
             EscolhaCPU();
-            VerificarGanhardor();
+            VerificaVencerdor();
         }
 
         private void btn_tesoura_Click(object sender, System.EventArgs e)
@@ -47,16 +40,15 @@ namespace Jogo_Pedra_Papel_Tesoura
             player1 = Opcoes.Tesoura;
             EscolhaJogador();
             EscolhaCPU();
-            VerificarGanhardor();
+            VerificaVencerdor();
         }
 
         void EscolhaJogador()
         {
             switch (player1)
             {
-                
                 case Opcoes.Pedra:
-                img_player1.BackgroundImage = Properties.Resources.res_papel;
+                img_player1.BackgroundImage = Properties.Resources.res_pedra;
                     break;
 
                 case Opcoes.Papel:
@@ -66,9 +58,6 @@ namespace Jogo_Pedra_Papel_Tesoura
                 case Opcoes.Tesoura:
                     img_player1.BackgroundImage = Properties.Resources.res_tesoura;
                     break;
-
-                    
-
             }
         }
 
@@ -79,7 +68,7 @@ namespace Jogo_Pedra_Papel_Tesoura
             if (numero == 1)
             {
                 CPU = Opcoes.Pedra;
-                img_cpu.BackgroundImage = Properties.Resources.res_papel;
+                img_cpu.BackgroundImage = Properties.Resources.res_pedra;
             }
             else if (numero == 2)
             {
@@ -90,86 +79,74 @@ namespace Jogo_Pedra_Papel_Tesoura
             {
                 CPU = Opcoes.Tesoura;
                 img_cpu.BackgroundImage = Properties.Resources.res_tesoura;
-            }
-                                          
+            }                            
         }
 
-        void VerificarGanhardor()
+        void VerificaVencerdor()
         {
             switch (player1)
             {
                 case Opcoes.Pedra:
                     if (CPU == Opcoes.Pedra)
-                        ganhador = Resultado.Empate;
+                        quem_venceu = Resultado.Empate;
                     else if (CPU == Opcoes.Papel)
-                        ganhador = Resultado.Cpu;
+                        quem_venceu = Resultado.CPU;
                     else if (CPU == Opcoes.Tesoura)
-                        ganhador = Resultado.Jogador;
+                        quem_venceu = Resultado.Jogador;
                     break;
 
                 case Opcoes.Papel:
                     if (CPU == Opcoes.Pedra)
-                        ganhador = Resultado.Jogador;
+                        quem_venceu = Resultado.Jogador;
                     else if (CPU == Opcoes.Papel)
-                        ganhador = Resultado.Empate;
+                        quem_venceu = Resultado.Empate;
                     else if (CPU == Opcoes.Tesoura)
-                        ganhador = Resultado.Cpu;
+                        quem_venceu = Resultado.CPU;
                     break;
 
                 case Opcoes.Tesoura:
                     if (CPU == Opcoes.Pedra)
-                        ganhador = Resultado.Cpu;
+                        quem_venceu = Resultado.CPU;
                     else if (CPU == Opcoes.Papel)
-                        ganhador = Resultado.Jogador;
+                        quem_venceu = Resultado.Jogador;
                     else if (CPU == Opcoes.Tesoura)
-                        ganhador = Resultado.Empate;
+                        quem_venceu = Resultado.Empate;
                     break;
-
-
             }
 
-            if (ganhador == Resultado.Jogador)
+            if (quem_venceu == Resultado.Jogador)
             {
-
                 label_resultado.ForeColor = Color.DarkGreen;
                 label_resultado.Text = ("Você Venceu!");
-                label_player1.Text = (int.Parse(label_player1.Text) + 1).ToString();
-
+                placarP1++;
+                label_player1.Text = placarP1.ToString();
             }
 
-            else if (ganhador == Resultado.Cpu)
+            else if (quem_venceu == Resultado.CPU)
             {
-
                 label_resultado.ForeColor = Color.Red;
                 label_resultado.Text = ("Você Perdeu!");
-                label_CPU.Text = (int.Parse(label_CPU.Text) + 1).ToString();
-
+                placarCPU++;
+                label_CPU.Text = placarCPU.ToString();
             }
-            else if (ganhador == Resultado.Empate)
+            else if (quem_venceu == Resultado.Empate)
             {
-
-
                 label_resultado.ForeColor = Color.Black;
                 label_resultado.Text = ("Empate!");
-
             }
 
-            if (int.Parse(label_CPU.Text) > (int.Parse(label_player1.Text)))
+            if (placarCPU > placarP1)
             {
-
                 label_CPU.ForeColor = Color.DarkGreen;
                 label_player1.ForeColor = Color.Red;
-
             }
-            else if (int.Parse(label_CPU.Text) < (int.Parse(label_player1.Text)))
+            else if (placarCPU < placarP1)
             {
-
                 label_CPU.ForeColor = Color.Red;
                 label_player1.ForeColor = Color.DarkGreen;
-
             }
 
-            if (int.Parse(label_CPU.Text) == 10)
+            if (placarCPU == 10)
             {
                 btn_papel.Enabled = false;
                 btn_pedra.Enabled = false;
@@ -177,28 +154,13 @@ namespace Jogo_Pedra_Papel_Tesoura
                 label_fimdejogo.Text = ("Fim de Jogo!");
             }
 
-            if (int.Parse(label_player1.Text) == 10)
+            else if (placarP1 == 10)
             {
                 btn_papel.Enabled = false;
                 btn_pedra.Enabled = false;
                 btn_tesoura.Enabled = false;
                 label_fimdejogo.Text = ("Fim de Jogo!");
-
             }
-
-
-
-        }
-
-   
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,7 +181,6 @@ namespace Jogo_Pedra_Papel_Tesoura
             label_fimdejogo.Text = null;
             label_CPU.ForeColor = Color.Black;
             label_player1.ForeColor = Color.Black;
-
         }
     }
 }
