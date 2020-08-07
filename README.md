@@ -1,2 +1,2 @@
-# Jogo_Pedra_Papel_Tesoura
-Jogo simples de "pedra,papel,tesoura" utilizando Windows Forms e lógica de programação
+# Rock Paper Scissors Game.
+built with C# Windows Forms Application to practice.
